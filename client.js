@@ -6,12 +6,16 @@ const connect = function () {
     host: "165.227.47.243", // IP address here,
     port: 50541// PORT number here,
   });
+  conn.on("connect",()=>{
+    console.log("Connection established!");
+    conn.write("Name: XZW");
+  })
 
   // interpret incoming data as text
   conn.setEncoding("utf8");
 
   conn.on("data", (serverData) =>{
-    console.log(serverData)
+    console.log(`From server: ${serverData}`)
   });
 
   return conn;
